@@ -58,8 +58,13 @@ Blockly.Blocks.FlightController_endprogram={
 Blockly.Blocks.FlightController_forward={
   init: function() {
     this.appendDummyInput("")
-        .appendField('向前飞行');
-	this.appendValueInput("TIME")
+        .appendField('以');
+    this.appendValueInput("SPEED")
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT);
+    this.appendDummyInput("")
+        .appendField('的速度向前飞行');
+    this.appendValueInput("TIME")
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT);
 	this.appendDummyInput("")
@@ -68,7 +73,7 @@ Blockly.Blocks.FlightController_forward={
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setColour(HUE);
-    this.setTooltip('命令无人机向前飞行');
+    this.setTooltip('命令无人机向前飞行。速度范围为0-100，超出范围的速度值将被限制在边界。');
     this.setHelpUrl('');
   }
 };
@@ -76,7 +81,12 @@ Blockly.Blocks.FlightController_forward={
 Blockly.Blocks.FlightController_backward={
   init: function() {
     this.appendDummyInput("")
-        .appendField('向后飞行');
+        .appendField('以');
+    this.appendValueInput("SPEED")
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT);    
+    this.appendDummyInput("")
+        .appendField('的速度向后飞行');
 	this.appendValueInput("TIME")
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT);
@@ -86,7 +96,7 @@ Blockly.Blocks.FlightController_backward={
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setColour(HUE);
-    this.setTooltip('命令无人机向后飞行');
+    this.setTooltip('命令无人机向后飞行。速度范围为0-100，超出范围的速度值将被限制在边界。');
     this.setHelpUrl('');
   }
 };
@@ -94,7 +104,12 @@ Blockly.Blocks.FlightController_backward={
 Blockly.Blocks.FlightController_goup={
   init: function() {
     this.appendDummyInput("")
-        .appendField('上升');
+        .appendField('以');
+    this.appendValueInput("SPEED")
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT); 
+    this.appendDummyInput("")
+        .appendField('的速度上升');
 	this.appendValueInput("TIME")
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT);
@@ -104,7 +119,7 @@ Blockly.Blocks.FlightController_goup={
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setColour(HUE);
-    this.setTooltip('命令无人机上升高度');
+    this.setTooltip('命令无人机上升高度。速度范围为0-100，超出范围的速度值将被限制在边界。');
     this.setHelpUrl('');
   }
 };
@@ -112,7 +127,12 @@ Blockly.Blocks.FlightController_goup={
 Blockly.Blocks.FlightController_godown={
   init: function() {
     this.appendDummyInput("")
-        .appendField('下降');
+        .appendField('以');
+    this.appendValueInput("SPEED")
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT); 
+    this.appendDummyInput("")
+        .appendField('的速度下降');
 	this.appendValueInput("TIME")
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT);
@@ -122,7 +142,7 @@ Blockly.Blocks.FlightController_godown={
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setColour(HUE);
-    this.setTooltip('命令无人机下降高度');
+    this.setTooltip('命令无人机下降高度。速度范围为0-100，超出范围的速度值将被限制在边界。');
     this.setHelpUrl('');
   }
 };
@@ -130,7 +150,12 @@ Blockly.Blocks.FlightController_godown={
 Blockly.Blocks.FlightController_goleft={
   init: function() {
     this.appendDummyInput("")
-        .appendField('向左飞行');
+        .appendField('以');
+    this.appendValueInput("SPEED")
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT); 
+    this.appendDummyInput("")
+        .appendField('的速度向左飞行');
 	this.appendValueInput("TIME")
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT);
@@ -140,7 +165,7 @@ Blockly.Blocks.FlightController_goleft={
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setColour(HUE);
-    this.setTooltip('命令无人机向左飞行');
+    this.setTooltip('命令无人机向左飞行。速度范围为0-100，超出范围的速度值将被限制在边界。');
     this.setHelpUrl('');
   }
 };
@@ -148,7 +173,12 @@ Blockly.Blocks.FlightController_goleft={
 Blockly.Blocks.FlightController_goright={
   init: function() {
     this.appendDummyInput("")
-        .appendField('向右飞行');
+        .appendField('以');
+    this.appendValueInput("SPEED")
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT); 
+    this.appendDummyInput("")
+        .appendField('的速度向右飞行');
 	this.appendValueInput("TIME")
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT);
@@ -158,7 +188,7 @@ Blockly.Blocks.FlightController_goright={
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setColour(HUE);
-    this.setTooltip('命令无人机向右飞行');
+    this.setTooltip('命令无人机向右飞行。速度范围为0-100，超出范围的速度值将被限制在边界。');
     this.setHelpUrl('');
   }
 };
@@ -166,7 +196,12 @@ Blockly.Blocks.FlightController_goright={
 Blockly.Blocks.FlightController_turnleft={
   init: function() {
     this.appendDummyInput("")
-        .appendField('向左转向');
+        .appendField('以');
+    this.appendValueInput("SPEED")
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT); 
+    this.appendDummyInput("")
+        .appendField('的速度向左转向');
 	this.appendValueInput("TIME")
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT);
@@ -176,7 +211,7 @@ Blockly.Blocks.FlightController_turnleft={
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setColour(HUE);
-    this.setTooltip('命令无人机向左转向');
+    this.setTooltip('命令无人机向左转向。速度范围为0-100，超出范围的速度值将被限制在边界。');
     this.setHelpUrl('');
   }
 };
@@ -184,7 +219,12 @@ Blockly.Blocks.FlightController_turnleft={
 Blockly.Blocks.FlightController_turnright={
   init: function() {
     this.appendDummyInput("")
-        .appendField('向右转向');
+        .appendField('以');
+    this.appendValueInput("SPEED")
+        .setCheck(Number)
+        .setAlign(Blockly.ALIGN_RIGHT); 
+    this.appendDummyInput("")
+        .appendField('的速度向右转向');
 	this.appendValueInput("TIME")
         .setCheck(Number)
         .setAlign(Blockly.ALIGN_RIGHT);
@@ -194,7 +234,7 @@ Blockly.Blocks.FlightController_turnright={
     this.setNextStatement(true, null);
     this.setInputsInline(true);
     this.setColour(HUE);
-    this.setTooltip('命令无人机向右转向');
+    this.setTooltip('命令无人机向右转向。速度范围为0-100，超出范围的速度值将被限制在边界。');
     this.setHelpUrl('');
   }
 };

@@ -6,8 +6,8 @@ goog.require('Blockly.Arduino');
 function bound100(inp)
 {
     if (inp > 100){return 100}
-    if (typeof inp == 'string'){return 0}
-    return inp
+    else if (inp > 0){return inp}
+    else {return 0}
     
 }
 

@@ -1,0 +1,93 @@
+<!--By Roger Wang  2017.11-->
+<!-- type="company" block="block/FlightController.js" generator="generator/FlightController.js"  lib="FlightController" -->
+<script type="text/javascript" src="../../blocks/company/FlightController.js"></script>
+<script type="text/javascript" src="../../generators/arduino/company/FlightController.js"></script>
+
+<category id="catFlightController" name="无人机控制器" colour="188">
+    <block type="FlightController_startprogram">
+	</block>
+	
+	<block type="FlightController_takeoff">
+	</block>
+	
+	<block type="FlightController_land">
+	</block>
+	
+	<block type="FlightController_endprogram">
+	</block>
+
+	<block type="FlightController_forward">
+		<value name="TIME">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+	</block>	
+
+	<block type="FlightController_backward">
+		<value name="TIME">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+	</block>
+
+	<block type="FlightController_goup">
+		<value name="TIME">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+	</block>
+
+	<block type="FlightController_godown">
+		<value name="TIME">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+	</block>
+
+	<block type="FlightController_goleft">
+		<value name="TIME">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+	</block>
+
+	<block type="FlightController_goright">
+		<value name="TIME">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+	</block>
+	
+	<block type="FlightController_turnleft">
+		<value name="TIME">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+	</block>
+	
+	<block type="FlightController_turnright">
+		<value name="TIME">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+	</block>
+	
+	<block type="FlightController_hover">
+		<value name="TIME">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+	</block>
+	
+	<block type="FlightController_flip">
+	</block>
+</category>

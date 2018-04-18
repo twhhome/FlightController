@@ -17,6 +17,11 @@
 	</block>
 
 	<block type="FlightController_forward">
+        <value name="SPEED">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
 		<value name="TIME">
           <shadow type="math_number">
             <field name="NUM">1</field>
@@ -25,6 +30,11 @@
 	</block>	
 
 	<block type="FlightController_backward">
+        <value name="SPEED">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
 		<value name="TIME">
           <shadow type="math_number">
             <field name="NUM">1</field>
@@ -33,6 +43,11 @@
 	</block>
 
 	<block type="FlightController_goup">
+        <value name="SPEED">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
 		<value name="TIME">
           <shadow type="math_number">
             <field name="NUM">1</field>
@@ -41,6 +56,11 @@
 	</block>
 
 	<block type="FlightController_godown">
+        <value name="SPEED">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
 		<value name="TIME">
           <shadow type="math_number">
             <field name="NUM">1</field>
@@ -49,6 +69,11 @@
 	</block>
 
 	<block type="FlightController_goleft">
+        <value name="SPEED">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
 		<value name="TIME">
           <shadow type="math_number">
             <field name="NUM">1</field>
@@ -57,6 +82,11 @@
 	</block>
 
 	<block type="FlightController_goright">
+        <value name="SPEED">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
 		<value name="TIME">
           <shadow type="math_number">
             <field name="NUM">1</field>
@@ -65,6 +95,11 @@
 	</block>
 	
 	<block type="FlightController_turnleft">
+        <value name="SPEED">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
 		<value name="TIME">
           <shadow type="math_number">
             <field name="NUM">1</field>
@@ -73,6 +108,11 @@
 	</block>
 	
 	<block type="FlightController_turnright">
+        <value name="SPEED">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
 		<value name="TIME">
           <shadow type="math_number">
             <field name="NUM">1</field>

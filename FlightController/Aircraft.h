@@ -53,6 +53,7 @@ class Aircraft
     void RepeatProgram();
     void pauseISR();
     void stopISR();
+    void SerialControl();
 };
 
 extern Aircraft* Vehicle;

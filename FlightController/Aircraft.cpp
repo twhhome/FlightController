@@ -10,7 +10,6 @@ void ProgramInit() {
   pinMode(11, OUTPUT);
   attachInterrupt(0, PauseISR, FALLING);
   attachInterrupt(1, StopISR, FALLING);
-  Serial.println("ProgramInit");
 }
 
 void PauseISR() {
@@ -26,7 +25,6 @@ void PauseISR() {
 }
 
 void StopISR() {
-  Serial.println("Stop");
   Vehicle->stopISR();
 }
 
@@ -34,14 +32,14 @@ void Aircraft::pauseISR() {
   if(pause_interrupt_able)
   {
     digitalWrite(11, HIGH);
-    for (int i = 0; i < 10; ++i) delayMicroseconds(10000);
+    for(int i = 0; i <= 200; i++)
+      Serial.print('0');
     digitalWrite(11, LOW);
-    Serial.print("Pause");
-    Serial.print("  code: ");
-    Serial.print(code);
-    Serial.print("  value:  ");
-    Serial.print(value);
-    Serial.println("  Press P to use Serial Control");
+    Serial.println("press pause");
+    Serial.print("code: ");
+    Serial.println(code);
+    Serial.print("value:  ");
+    Serial.println(value);
     cli();
     interrupt = true;
     if(code != 0)
@@ -66,12 +64,18 @@ void Aircraft::pauseISR() {
           pcf8591.End();
       }
     }
-    for (int i = 0; i < 10; ++i) delayMicroseconds(10000);
-    SerialControl();
-    cli();
+    for(int i = 1; i < 150; i++)
+      Serial.print('0'); // delay time
+    while(digitalRead(A1) != LOW)
+    {
+      if(digitalRead(3) == LOW)
+        stopISR();
+    }
     digitalWrite(11, HIGH);
-    for (int i = 0; i < 10; ++i) delayMicroseconds(10000);
+    for(int i = 0; i <= 200; i++)
+      Serial.print('0');  // delay time
     digitalWrite(11, LOW);
+    Serial.println("press pause again");
     if(code != 0)
     {
       switch(code)
@@ -94,8 +98,13 @@ void Aircraft::pauseISR() {
           pcf8591.End();
       }
     }
-    for (int i = 0; i < 10; ++i) delayMicroseconds(10000);
-    Serial.println("Continue");
+    for(int i = 1; i < 50; i++)
+      Serial.println(i); // delay time
+    if(code == 5)
+    {
+      for(int i = 1; i < 200; i++)
+        Serial.println(i); // delay time
+    }
   }
 }
 
@@ -104,13 +113,15 @@ void Aircraft::stopISR() {
   {
     cli();
     digitalWrite(11, HIGH);
-    for (int i = 0; i < 10; ++i) delayMicroseconds(10000);
+    for(int i = 0; i <= 200; i++)
+      Serial.print('0');
     digitalWrite(11, LOW);
     tlc5620.writeTLC5620(DACA, DAC_REF, 0);
     tlc5620.writeTLC5620(DACB, DAC_REF, 227);
     tlc5620.writeTLC5620(DACC, DAC_REF, 0);
     tlc5620.writeTLC5620(DACD, DAC_REF, 0);
-    for (int i = 0; i < 10; ++i) delayMicroseconds(10000);
+    for(int i = 0; i < 200; i++)
+      Serial.print(i); // delay time
     while(1);
   }
 }
@@ -172,8 +183,7 @@ void Aircraft::Init()
 
 void Aircraft::Reset(byte num)
 {
-  Serial.print("called Reset");
-  Serial.println(num);
+  Serial.println("called Reset");
   code = num;
   value = 111;
   switch(num)
@@ -445,37 +455,4 @@ void Aircraft::RepeatProgram()
   delay(100);
   digitalWrite(11, LOW);
   delay(500);
-}
-
-void Aircraft::SerialControl()
-{
-  char temp;
-  int spd = 100;
-  while (digitalRead(A1) != LOW) {
-    if(digitalRead(3) == LOW) stopISR();
-    sei();
-    while (Serial.available() > 0) {
-      temp = Serial.read();
-      Serial.println(temp);
-      switch (temp) {
-        case 'W':tlc5620.writeTLC5620(DACC, DAC_REF, 111 + 1.16 * spd); break;
-        case 'w':tlc5620.writeTLC5620(DACC, DAC_REF, 111); break;
-        case 'A':tlc5620.writeTLC5620(DACD, DAC_REF, 111 - 1.11 * spd); break;
-        case 'a':tlc5620.writeTLC5620(DACD, DAC_REF, 111); break;
-        case 'S':tlc5620.writeTLC5620(DACC, DAC_REF, 111 - 1.11 * spd); break;
-        case 's':tlc5620.writeTLC5620(DACC, DAC_REF, 111); break;
-        case 'D':tlc5620.writeTLC5620(DACD, DAC_REF, 111 + 1.16 * spd); break;
-        case 'd':tlc5620.writeTLC5620(DACD, DAC_REF, 111); break;
-        case 'I':tlc5620.writeTLC5620(DACA, DAC_REF, 111 + 1.16 * spd); break;
-        case 'i':tlc5620.writeTLC5620(DACA, DAC_REF, 111); break;
-        case 'J':tlc5620.writeTLC5620(DACB, DAC_REF, 111 - 1.11 * spd); break;
-        case 'j':tlc5620.writeTLC5620(DACB, DAC_REF, 111); break;
-        case 'K':tlc5620.writeTLC5620(DACA, DAC_REF, 111 - 1.11 * spd); break;
-        case 'k':tlc5620.writeTLC5620(DACA, DAC_REF, 111); break;
-        case 'L':tlc5620.writeTLC5620(DACB, DAC_REF, 111 + 1.16 * spd); break;
-        case 'l':tlc5620.writeTLC5620(DACB, DAC_REF, 111); break;
-      }
-    }
-    cli();
-  }
 }

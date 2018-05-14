@@ -1,6 +1,14 @@
 #include "Aircraft.h"
 #include<Arduino.h>
 
+int bound100(byte spd)
+{
+    if (spd > 100) return 100;
+    else if (spd > 0) return spd;
+    else return 0;
+}
+
+
 void ProgramInit() {
   Serial.begin(9600);
   pinMode(A0, INPUT);
@@ -247,7 +255,7 @@ void Aircraft::GoUp(int t, byte spd)
   pause_interrupt_able = true;
   stop_interrupt_able = true;
   code = 1;
-  value = 111 + 1.16 * spd;
+  value = 111 + 1.16 * bound100(spd);
   tlc5620.writeTLC5620(DACA, DAC_REF, value);
   delay(t);
   Reset(1);
@@ -258,7 +266,7 @@ void Aircraft::GoDown(int t, byte spd)
   pause_interrupt_able = true;
   stop_interrupt_able = true;
   code = 1;
-  value = 111 - 1.11 * spd;
+  value = 111 - 1.11 * bound100(spd);
   tlc5620.writeTLC5620(DACA, DAC_REF, value);
   delay(t);
   Reset(1);
@@ -269,7 +277,7 @@ void Aircraft::GoLeft(int t, byte spd)
   pause_interrupt_able = true;
   stop_interrupt_able = true;
   code = 4;
-  value = 111 - 1.11 * spd;
+  value = 111 - 1.11 * bound100(spd);
   tlc5620.writeTLC5620(DACD, DAC_REF, value);
   delay(t);
   Reset(4);
@@ -280,7 +288,7 @@ void Aircraft::GoRight(int t, byte spd)
   pause_interrupt_able = true;
   stop_interrupt_able = true;
   code = 4;
-  value = 111 + 1.16 * spd;
+  value = 111 + 1.16 * bound100(spd);
   tlc5620.writeTLC5620(DACD, DAC_REF, value);
   delay(t);
   Reset(4);
@@ -291,7 +299,7 @@ void Aircraft::TurnLeft(int t,  byte spd)
   pause_interrupt_able = true;
   stop_interrupt_able = true;
   code = 2;
-  value = 111 - 1.11 * spd;
+  value = 111 - 1.11 * bound100(spd);
   tlc5620.writeTLC5620(DACB, DAC_REF, value);
   delay(t);
   Reset(2);
@@ -302,7 +310,7 @@ void Aircraft::TurnRight(int t, byte spd)
   pause_interrupt_able = true;
   stop_interrupt_able = true;
   code = 2;
-  value = 111 + 1.16 * spd;
+  value = 111 + 1.16 * bound100(spd);
   tlc5620.writeTLC5620(DACB, DAC_REF, value);
   delay(t);
   Reset(2);
@@ -313,7 +321,7 @@ void Aircraft::Forward(int t, byte spd)
   pause_interrupt_able = true;
   stop_interrupt_able = true;
   code = 3;
-  value = 111 + 1.16 * spd;
+  value = 111 + 1.16 * bound100(spd);
   tlc5620.writeTLC5620(DACC, DAC_REF, value);
   delay(t);
   Reset(3);
@@ -324,7 +332,7 @@ void Aircraft::Backward(int t, byte spd)
   pause_interrupt_able = true;
   stop_interrupt_able = true;
   code = 3;
-  value = 111 - 1.11 * spd;
+  value = 111 - 1.11 * bound100(spd);
   tlc5620.writeTLC5620(DACC, DAC_REF, value);
   delay(t);
   Reset(3);
